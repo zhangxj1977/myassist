@@ -9,7 +9,7 @@ import java.util.Properties;
  *
  */
 public class ConfigConnection {
-	
+
 	/**
 	 * database type
 	 */
@@ -19,22 +19,22 @@ public class ConfigConnection {
 	 * connection name
 	 */
 	private String name = null;
-	
+
 	/**
 	 * connect driver class name
 	 */
 	private String driverClass = null;
-	
+
 	/**
 	 * connect user
 	 */
 	private String user = null;
-	
+
 	/**
 	 * connect user password
 	 */
 	private String passwd = null;
-	
+
 	/**
 	 * connect url
 	 */
