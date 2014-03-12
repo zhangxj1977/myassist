@@ -1,4 +1,5 @@
 myassist
 ========
 
-gui based database management tool. can be extended for multi database. and plugined for developing system.
+1. Gui based database management tool. 
+   Can be extended for multi database, and plugined for developing system.
