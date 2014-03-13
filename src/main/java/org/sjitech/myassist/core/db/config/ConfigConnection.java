@@ -1,4 +1,4 @@
-package org.sjitech.myassist.core.config;
+package org.sjitech.myassist.core.db.config;
 
 import java.util.Properties;
 
@@ -53,7 +53,7 @@ public class ConfigConnection {
 	}
 
 	/**
-	 * @param dbType ƒZƒbƒg‚·‚é dbType
+	 * @param dbType ã‚»ãƒƒãƒˆã™ã‚‹ dbType
 	 */
 	public void setDbType(DBType dbType) {
 		this.dbType = dbType;
@@ -67,7 +67,7 @@ public class ConfigConnection {
 	}
 
 	/**
-	 * @param name ƒZƒbƒg‚·‚é name
+	 * @param name ã‚»ãƒƒãƒˆã™ã‚‹ name
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -81,7 +81,7 @@ public class ConfigConnection {
 	}
 
 	/**
-	 * @param driverClass ƒZƒbƒg‚·‚é driverClass
+	 * @param driverClass ã‚»ãƒƒãƒˆã™ã‚‹ driverClass
 	 */
 	public void setDriverClass(String driverClass) {
 		this.driverClass = driverClass;
@@ -95,7 +95,7 @@ public class ConfigConnection {
 	}
 
 	/**
-	 * @param user ƒZƒbƒg‚·‚é user
+	 * @param user ã‚»ãƒƒãƒˆã™ã‚‹ user
 	 */
 	public void setUser(String user) {
 		this.user = user;
@@ -109,7 +109,7 @@ public class ConfigConnection {
 	}
 
 	/**
-	 * @param passwd ƒZƒbƒg‚·‚é passwd
+	 * @param passwd ã‚»ãƒƒãƒˆã™ã‚‹ passwd
 	 */
 	public void setPasswd(String passwd) {
 		this.passwd = passwd;
@@ -123,7 +123,7 @@ public class ConfigConnection {
 	}
 
 	/**
-	 * @param url ƒZƒbƒg‚·‚é url
+	 * @param url ã‚»ãƒƒãƒˆã™ã‚‹ url
 	 */
 	public void setUrl(String url) {
 		this.url = url;
@@ -137,7 +137,7 @@ public class ConfigConnection {
 	}
 
 	/**
-	 * @param connectProperties ƒZƒbƒg‚·‚é connectProperties
+	 * @param connectProperties ã‚»ãƒƒãƒˆã™ã‚‹ connectProperties
 	 */
 	public void setConnectProperties(Properties connectProperties) {
 		this.connectProperties = connectProperties;
