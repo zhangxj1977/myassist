@@ -1,4 +1,4 @@
-package org.sjitech.myassist.test;
+package org.sjitech.myassist.test.testdb;
 
 import java.util.List;
 import java.util.Map;

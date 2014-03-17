@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:task="http://www.springframework.org/schema/task"
+  xmlns:util="http://www.springframework.org/schema/util"
+  xmlns:p="http://www.springframework.org/schema/p"
+  xmlns:tx="http://www.springframework.org/schema/tx"
+  xmlns:aop="http://www.springframework.org/schema/aop"
+  xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd    
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+  <bean class=" org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+  	<property name="locations">
+  		<list>
+  			<value>classpath:jdbc.properties</value>
+  		</list>
+  	</property>
+  </bean>
+  
+  <!-- SPRINGコンテナに自動に配属する。 -->
+  <context:component-scan base-package="jp.co.gib.claimone" />
+  
+  <!-- Aopを定義する。 -->
+  <aop:config>
+      <aop:pointcut id="controllerPointcut" expression="execution(* * ..*Controller.*(..))" />
+      <aop:pointcut id="servicePointcut" expression="execution(* * ..*BO.*(..))" />
+      <aop:pointcut id="daoPointcut" expression="execution(* * ..*DAO.*(..))" />
+      <aop:advisor pointcut-ref="controllerPointcut" advice-ref="controllerLogAdvice" />
+      <aop:advisor pointcut-ref="servicePointcut" advice-ref="boLogAdvice" />
+      <aop:advisor pointcut-ref="daoPointcut" advice-ref="daoLogAdvice" />
+      <aop:advisor pointcut-ref="servicePointcut" advice-ref="transactionAdvice" />
+  </aop:config>
+
+  <bean id="controllerLogAdvice" class="jp.co.gib.claimone.common.aop.ControllLogAdvice" />
+  <bean id="boLogAdvice" class="jp.co.gib.claimone.common.aop.BoLogAdvice" />
+  <bean id="daoLogAdvice" class="jp.co.gib.claimone.common.aop.DaoLogAdvice" />
+  <tx:advice id="transactionAdvice" transaction-manager="transactionManager">
+      <tx:attributes>
+          <tx:method name="find*" propagation="SUPPORTS"
+              isolation="READ_COMMITTED" read-only="true"
+              rollback-for="java.lang.Throwable" />
+          <tx:method name="get*" propagation="SUPPORTS"
+              isolation="READ_COMMITTED" read-only="true"
+              rollback-for="java.lang.Throwable" />
+          <tx:method name="list*" propagation="SUPPORTS"
+              isolation="READ_COMMITTED" read-only="true"
+              rollback-for="java.lang.Throwable" />
+          <tx:method name="download*" propagation="SUPPORTS"
+              isolation="READ_COMMITTED" read-only="true"
+              rollback-for="java.lang.Throwable" />
+          <tx:method name="create*" propagation="REQUIRED"
+              isolation="READ_COMMITTED" rollback-for="java.lang.Throwable" />
+          <tx:method name="confirm*" propagation="REQUIRED"
+              isolation="READ_COMMITTED" rollback-for="java.lang.Throwable" />
+          <tx:method name="update*" propagation="REQUIRED"
+              isolation="READ_COMMITTED" rollback-for="java.lang.Throwable" />
+          <tx:method name="remove*" propagation="REQUIRED"
+              isolation="READ_COMMITTED" rollback-for="java.lang.Throwable" />
+      </tx:attributes>
+  </tx:advice>
+ 
+  <!-- DB2データソースを設定する。 -->
+  <!-- batis設定 -->
+  <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+  	  <property name="driverClassName" value="${DB_DRIVER}" />
+      <property name="url" value="${DB_URL}" />
+      <property name="username" value="${DB_USER}" />
+      <property name="password" value="${DB_PASSWD}" />
+  </bean>
+  <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+      <property name="dataSource" ref="dataSource" />
+      <property name="typeAliasesPackage" value="jp.co.gib.claimone.**.dto" />
+      <property name="plugins">
+      	<array>
+      		<bean class="jp.co.gib.claimone.common.support.db.SQLMonitorInterceptor"/>
+      	</array>
+      </property>
+  </bean>
+  <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+      <property name="basePackage" value="jp.co.gib.claimone.**.dao" />
+  </bean>
+  <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+      <property name="dataSource" ref="dataSource" />
+  </bean>
+
+</beans>
