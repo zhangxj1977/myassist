@@ -1,4 +1,4 @@
-package org.sjitech.myassist.api.cases;
+package org.sjitech.myassist.unit.cases;
 
 /**
  * identify a method param

@@ -8,12 +8,12 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.sjitech.myassist.api.annotation.Note;
-import org.sjitech.myassist.api.cases.Params;
-import org.sjitech.myassist.api.cases.UnitCase;
 import org.sjitech.myassist.core.beans.BeanManager;
 import org.sjitech.myassist.test.testunit.bo.PersonBO;
 import org.sjitech.myassist.test.testunit.dto.Address;
 import org.sjitech.myassist.test.testunit.dto.PersonInfo;
+import org.sjitech.myassist.unit.cases.Params;
+import org.sjitech.myassist.unit.cases.UnitCase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
