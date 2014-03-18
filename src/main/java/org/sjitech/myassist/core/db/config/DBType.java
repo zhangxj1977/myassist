@@ -2,7 +2,7 @@ package org.sjitech.myassist.core.db.config;
 
 public enum DBType {
 
-	// �ėpJDBC
+	// common jdbc
 	Common,
 
 	// db2
