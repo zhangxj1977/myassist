@@ -33,5 +33,7 @@
 	<classpathentry kind="lib" path="lib/spring-beans-3.2.4.RELEASE.jar"/>
 	<classpathentry kind="lib" path="lib/spring-context-3.2.4.RELEASE.jar"/>
 	<classpathentry kind="lib" path="lib/spring-core-3.2.4.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/docking-frames-common.jar"/>
+	<classpathentry kind="lib" path="lib/docking-frames-core.jar"/>
 	<classpathentry kind="output" path="classes"/>
 </classpath>
