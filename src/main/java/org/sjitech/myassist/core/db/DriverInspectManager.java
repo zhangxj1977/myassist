@@ -10,9 +10,6 @@ import java.util.Properties;
 
 import org.sjitech.myassist.core.ApplicationException;
 import org.sjitech.myassist.core.db.config.ConfigConnection;
-import org.sjitech.myassist.core.db.inspect.CommonConnectionInspect;
-import org.sjitech.myassist.core.db.inspect.DB2ConnectionInspect;
-import org.sjitech.myassist.core.db.inspect.OracleConnectionInspect;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -67,16 +64,8 @@ public class DriverInspectManager {
 				log.debug("ClientHostname=" + clientHostName);
 			}
 
-			switch (config.getDbType()) {
-			case DB2:
-				return new DB2ConnectionInspect(conn);
-			case Oracle:
-				return new OracleConnectionInspect(conn);
-			case Common:
-				return new CommonConnectionInspect(conn);
-			default:
-				return new CommonConnectionInspect(conn);
-			}
+			return config.getDbType().getInspectClass().
+					getConstructor(Connection.class).newInstance(conn);
 		} catch (Exception e) {
 			throw new ApplicationException(e);
 		}

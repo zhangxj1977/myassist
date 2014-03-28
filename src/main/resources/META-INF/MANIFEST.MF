@@ -1,3 +1,3 @@
 Manifest-Version: 1.0
 Main-Class: org.sjitech.myassist.Main
-SplashScreen-Image: sjitech/myassist/images/splash.png
+SplashScreen-Image: org/sjitech/myassist/images/splash.png

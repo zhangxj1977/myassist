@@ -8,6 +8,7 @@ import org.jdesktop.swingx.JXFrame;
  * @author zhangxj
  *
  */
+@SuppressWarnings("serial")
 public class FrmMain extends JXFrame {
 
 	public FrmMain(String title, boolean exitOnClose) {
