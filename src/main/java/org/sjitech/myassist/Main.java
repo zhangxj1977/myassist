@@ -46,7 +46,7 @@ public class Main {
         // do initialize
 
         // show main frame
-		FrmMain frmMain = new FrmMain("myassist", true);
+		FrmMain frmMain = new FrmMain("myassist");
 		frmMain.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
 		// close splash screen before frame show
