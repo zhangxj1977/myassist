@@ -1,4 +1,4 @@
-package org.sjitech.myassist.unit.cases;
+package org.sjitech.myassist.core.unit;
 
 import java.sql.Timestamp;
 

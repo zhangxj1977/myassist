@@ -7,13 +7,13 @@ import java.util.List;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.sjitech.myassist.api.annotation.Note;
-import org.sjitech.myassist.core.beans.BeanManager;
+import org.sjitech.myassist.api.annotation.Description;
+import org.sjitech.myassist.core.unit.Params;
+import org.sjitech.myassist.core.unit.UnitCase;
+import org.sjitech.myassist.core.utils.ClassUtils;
 import org.sjitech.myassist.test.testunit.bo.PersonBO;
 import org.sjitech.myassist.test.testunit.dto.Address;
 import org.sjitech.myassist.test.testunit.dto.PersonInfo;
-import org.sjitech.myassist.unit.cases.Params;
-import org.sjitech.myassist.unit.cases.UnitCase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,7 +31,7 @@ public class TestUnitCase {
 	public static void tearDownAfterClass() throws Exception {
 	}
 
-	@Test
+	//@Test
 	public void testUnitCase() {
 		UnitCase t = new UnitCase();
 		t.setUnitCaseNo("A001-0001");
@@ -77,15 +77,15 @@ public class TestUnitCase {
 	@Test
 	public void testBeanManager() {
 
-		List<Class<?>> all = BeanManager.getAllUnitClass();
+		List<Class<?>> all = ClassUtils.getClassWith("org.sjitech.myassist.test.testunit.bo.**");
 		
 		for (Class<?> c : all) {
 			System.out.println(c);
-			Method[] methods = BeanManager.getUnitMethods(c);
+			Method[] methods = ClassUtils.getMethods(c);
 			
 			for (Method method : methods) {
 				String methodName = method.getName();
-				Note note = method.getAnnotation(Note.class);
+				Description note = method.getAnnotation(Description.class);
 				Class<?>[] paramTypes = method.getParameterTypes();
 				Class<?> returnType = method.getReturnType();
 				
@@ -95,7 +95,7 @@ public class TestUnitCase {
 				}
 				for (Class<?> param : paramTypes) {
 					if (param.isInterface()) {
-						Class<?> implClass = BeanManager.getImplementClass(param);
+						Class<?> implClass = ClassUtils.getImplementClass(param);
 						log.debug("interface=" + param.getName());
 						log.debug("implement=" + implClass.getName());
 					} else {

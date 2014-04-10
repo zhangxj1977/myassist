@@ -1,4 +1,4 @@
-package org.sjitech.myassist.core.ui;
+package org.sjitech.myassist.view.views;
 
 import java.util.Vector;
 

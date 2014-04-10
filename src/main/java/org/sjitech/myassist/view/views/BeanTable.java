@@ -1,4 +1,4 @@
-package org.sjitech.myassist.core.ui;
+package org.sjitech.myassist.view.views;
 
 import org.jdesktop.swingx.JXTreeTable;
 import org.jdesktop.swingx.treetable.TreeTableModel;

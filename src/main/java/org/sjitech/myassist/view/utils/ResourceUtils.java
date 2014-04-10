@@ -1,4 +1,4 @@
-package org.sjitech.myassist.core.ui;
+package org.sjitech.myassist.view.utils;
 
 import java.util.Map;
 
@@ -9,7 +9,7 @@ import javax.swing.plaf.FontUIResource;
  * @author zhangxj
  *
  */
-public final class ResourceManager {
+public final class ResourceUtils {
 
 	/**
 	 * UIFonts reset

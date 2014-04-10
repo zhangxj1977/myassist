@@ -1,4 +1,4 @@
-package org.sjitech.myassist.unit.cases;
+package org.sjitech.myassist.core.unit;
 
 /**
  * identify a method invoke result

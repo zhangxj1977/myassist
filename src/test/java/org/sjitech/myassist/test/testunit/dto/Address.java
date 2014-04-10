@@ -1,17 +1,17 @@
 package org.sjitech.myassist.test.testunit.dto;
 
-import org.sjitech.myassist.api.annotation.Note;
+import org.sjitech.myassist.api.annotation.Description;
 
 
 public class Address {
 
-	@Note("国")
+	@Description("国")
 	private String country = null;
 	
-	@Note("都市")
+	@Description("都市")
 	private String city = null;
 	
-	@Note("番地")
+	@Description("番地")
 	private String banchi = null;
 
 	public String getCountry() {

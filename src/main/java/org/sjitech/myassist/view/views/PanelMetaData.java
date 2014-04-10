@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.sjitech.myassist.dbview;
+package org.sjitech.myassist.view.views;
 
 import org.jdesktop.swingx.JXPanel;
 
