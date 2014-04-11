@@ -51,6 +51,8 @@ public class JToggleButtonEx extends JToggleButton implements MouseListener {
 	 */
 	public JToggleButtonEx(String text, Icon icon) {
 		super(text, icon);
+		setFocusPainted(false);
+		setContentAreaFilled(false);
 		setBorder(emptyBorder);
 		addMouseListener(this);
 	}
@@ -68,7 +70,6 @@ public class JToggleButtonEx extends JToggleButton implements MouseListener {
 	public void updateUI() {
 		super.updateUI();
 		setBorder(emptyBorder);
-		setFocusPainted(false);
 	}
 
 	/**
@@ -88,7 +89,7 @@ public class JToggleButtonEx extends JToggleButton implements MouseListener {
 	 */
 	public void mousePressed(MouseEvent e) {
 		AbstractButton button = (AbstractButton) e.getSource();
-		if (button.isEnabled() 
+		if (button.isEnabled()
 				&& e.getButton() == MouseEvent.BUTTON1) {
 			button.setBorder(pressedBorder);
 		}

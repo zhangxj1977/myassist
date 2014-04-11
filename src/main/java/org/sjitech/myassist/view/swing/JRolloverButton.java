@@ -69,6 +69,7 @@ public class JRolloverButton extends JButton implements MouseListener {
 		super.updateUI();
 		setBorder(emptyBorder);
 		setFocusPainted(false);
+		setContentAreaFilled(false);
 	}
 
 	/**
@@ -86,7 +87,7 @@ public class JRolloverButton extends JButton implements MouseListener {
 	 */
 	public void mousePressed(MouseEvent e) {
 		AbstractButton button = (AbstractButton) e.getSource();
-		if (button.isEnabled() 
+		if (button.isEnabled()
 				&& e.getButton() == MouseEvent.BUTTON1) {
 			button.setBorder(pressedBorder);
 		}

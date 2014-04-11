@@ -30,7 +30,7 @@ import bibliothek.util.container.Tuple;
 
 /**
  * customize minimize/normalize
- * 
+ *
  */
 public class Minimizer {
 	/** the areas which contain the normalized {@link Dockable}s */
@@ -61,7 +61,7 @@ public class Minimizer {
 	/**
 	 * Creates a new <code>Minimizer</code>, adds all listeners and actions to
 	 * <code>controller</code>.
-	 * 
+	 *
 	 * @param core
 	 *            the center of this application
 	 * @param controller
@@ -79,7 +79,7 @@ public class Minimizer {
 	/**
 	 * Sets the station to which {@link Dockable}s are "normalized" when their
 	 * old location is not known or invalid.
-	 * 
+	 *
 	 * @param defaultStation
 	 *            the backup
 	 */
@@ -89,7 +89,7 @@ public class Minimizer {
 
 	/**
 	 * Stores a new station whose children will have the "minimize"-action.
-	 * 
+	 *
 	 * @param station
 	 *            a station whose children can be minimized
 	 */
@@ -99,7 +99,7 @@ public class Minimizer {
 
 	/**
 	 * Stores a new station whose children are minimized {@link Dockable}s.
-	 * 
+	 *
 	 * @param station
 	 *            the new station
 	 * @param defaultDrop
@@ -113,7 +113,7 @@ public class Minimizer {
 
 	/**
 	 * Ensures that <code>dockable</code> is no longer minimized.
-	 * 
+	 *
 	 * @param dockable
 	 *            the <code>Dockable</code> that will be shown on one of the
 	 *            {@link #addAreaNormalized(DockStation) normalized stations}.
@@ -145,7 +145,7 @@ public class Minimizer {
 	/**
 	 * Searches the first parent of <code>dockable</code> that was registered
 	 * through {@link #addAreaMinimized(FlapDockStation, DockableProperty)}.
-	 * 
+	 *
 	 * @param dockable
 	 *            the element whose parent is searched
 	 * @return one of the stations for minimized {@link Dockable}s or
@@ -171,7 +171,7 @@ public class Minimizer {
 	 * Ensures that <code>dockable</code> is no longer "normalized". The old
 	 * location of <code>dockable</code> is stored, so it can be
 	 * {@link #normalize(Dockable) normalized} again.
-	 * 
+	 *
 	 * @param dockable
 	 *            the element to minimize
 	 */
@@ -216,7 +216,7 @@ public class Minimizer {
 	 * A listener added to the {@link DockRegister}, this listener is
 	 * responsible to remove data about {@link Dockable}s that are no longer
 	 * registered.
-	 *  
+	 *
 	 */
 	private class Listener extends DockRegisterAdapter {
 		@Override
@@ -230,7 +230,7 @@ public class Minimizer {
 	 * An action and action-guard that allows the user to minimize a
 	 * {@link Dockable}. The action is only added to children of the
 	 * "normalized stations".
-	 * 
+	 *
 	 */
 	private class Minimize extends SimpleButtonAction implements ActionGuard {
 		/** the result of {@link #getSource(Dockable)} */
@@ -279,7 +279,7 @@ public class Minimizer {
 	/**
 	 * An action that allows the user to normalize a {@link Dockable}. The
 	 * action is only added to the children of the "minimized stations".
-	 * 
+	 *
 	 */
 	private class Normalize extends SimpleButtonAction implements ActionGuard {
 		/** the result of {@link #getSource(Dockable)} */
@@ -294,7 +294,7 @@ public class Minimizer {
 		public Normalize() {
 			source = new DefaultDockActionSource(new LocationHint(
 					LocationHint.ACTION_GUARD, LocationHint.RIGHT), this);
-			setText("����");
+			setText("復元");
 
 			icon = new DockActionIcon("split.normalize", this) {
 				protected void changed(Icon oldValue, Icon newValue) {
