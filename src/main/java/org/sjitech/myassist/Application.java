@@ -15,9 +15,9 @@ import org.sjitech.myassist.view.docks.Minimizer;
 import org.sjitech.myassist.view.images.IconSet;
 import org.sjitech.myassist.view.menus.FileMenu;
 import org.sjitech.myassist.view.menus.WindowMenu;
-import org.sjitech.myassist.view.views.PanelExecuteMethods;
-import org.sjitech.myassist.view.views.PanelInspectMethods;
-import org.sjitech.myassist.view.views.PanelScanTestClass;
+import org.sjitech.myassist.view.views.ConsoleView;
+import org.sjitech.myassist.view.views.UnitCasesView;
+import org.sjitech.myassist.view.views.UnitSuiteView;
 
 import bibliothek.extension.gui.dock.theme.EclipseTheme;
 import bibliothek.gui.DockController;
@@ -152,27 +152,18 @@ public class Application {
 	 */
 	private void buildDefaultPerspective() {
 		// Setup dockables
-		DefaultDockable scanTestClass = new DefaultDockable(
-				new PanelScanTestClass(),
-				"classes",
-				IconSet.get("classes.gif"));
-		DefaultDockable scanTestMethod = new DefaultDockable(
-				new PanelInspectMethods(),
-				"methods",
-				IconSet.get("meth_obj.gif"));
-		DefaultDockable runTestMethod = new DefaultDockable(
-				new PanelExecuteMethods(),
-				"execute",
-				IconSet.get("run_method.gif"));
+		UnitSuiteView unitSuiteView = new UnitSuiteView();
+		UnitCasesView unitMethod = new UnitCasesView(null);
+		ConsoleView consoleView = new ConsoleView();
 
-		frontend.addDockable("classes", scanTestClass);
-		frontend.addDockable("methods", scanTestMethod);
-		frontend.addDockable("run", runTestMethod);
+		frontend.addDockable("unitclasses", unitSuiteView);
+		frontend.addDockable("methods", unitMethod);
+		frontend.addDockable("console", consoleView);
 
 		SplitDockGrid grid = new SplitDockGrid();
-		grid.addDockable(0, 0, 2, 1, scanTestClass);
-		grid.addDockable(1, 0, 3, 1, scanTestMethod);
-		grid.addDockable(0, 2, 4, 1, runTestMethod);
+		grid.addDockable(0, 0, 2, 2, unitSuiteView);
+		grid.addDockable(1, 0, 3, 2, unitMethod);
+		grid.addDockable(0, 2, 4, 1, consoleView);
 		station.dropTree(grid.toTree());
 	}
 
