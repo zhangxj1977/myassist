@@ -48,5 +48,4 @@ public class Main {
         app.initialize();
         app.startup();
 	}
-
 }

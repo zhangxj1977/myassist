@@ -8,7 +8,7 @@ import java.awt.event.MouseListener;
 import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
 import javax.swing.Icon;
-import javax.swing.JButton;
+import javax.swing.JToggleButton;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
@@ -20,7 +20,7 @@ import javax.swing.border.EmptyBorder;
  *
  */
 @SuppressWarnings("serial")
-public class JRolloverButton extends JButton implements MouseListener {
+public class JToggleButtonEx extends JToggleButton implements MouseListener {
 
 	/** for rollover */
 	Border rollBorder = BorderFactory.createBevelBorder(BevelBorder.RAISED,
@@ -34,14 +34,14 @@ public class JRolloverButton extends JButton implements MouseListener {
 	/**
 	 *
 	 */
-	public JRolloverButton() {
+	public JToggleButtonEx() {
 		this(null, null);
 	}
 
 	/**
 	 * @param icon
 	 */
-	public JRolloverButton(Icon icon) {
+	public JToggleButtonEx(Icon icon) {
 		this(null, icon);
 	}
 
@@ -49,7 +49,7 @@ public class JRolloverButton extends JButton implements MouseListener {
 	 * @param text
 	 * @param icon
 	 */
-	public JRolloverButton(String text, Icon icon) {
+	public JToggleButtonEx(String text, Icon icon) {
 		super(text, icon);
 		setBorder(emptyBorder);
 		addMouseListener(this);
@@ -58,7 +58,7 @@ public class JRolloverButton extends JButton implements MouseListener {
 	/**
 	 * @param text
 	 */
-	public JRolloverButton(String text) {
+	public JToggleButtonEx(String text) {
 		this(text, null);
 	}
 
@@ -77,7 +77,9 @@ public class JRolloverButton extends JButton implements MouseListener {
 	public void mouseEntered(MouseEvent e) {
 		AbstractButton button = (AbstractButton) e.getSource();
 		if (button.isEnabled()) {
-			button.setBorder(rollBorder);
+			if (!button.isSelected()) {
+				button.setBorder(rollBorder);
+			}
 		}
 	}
 
@@ -97,7 +99,7 @@ public class JRolloverButton extends JButton implements MouseListener {
 	 */
 	public void mouseReleased(MouseEvent e) {
 		AbstractButton button = (AbstractButton) e.getSource();
-		if (button.isEnabled()) {
+		if (button.isEnabled() && !button.isSelected()) {
 			button.setBorder(rollBorder);
 		}
 	}
@@ -112,7 +114,9 @@ public class JRolloverButton extends JButton implements MouseListener {
 	@Override
 	public void mouseExited(MouseEvent e) {
 		AbstractButton button = (AbstractButton) e.getSource();
-		button.setBorder(emptyBorder);
+		if (!button.isSelected()) {
+			button.setBorder(emptyBorder);
+		}
 	}
 
 }

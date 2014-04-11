@@ -1,6 +1,7 @@
 package org.sjitech.myassist.view.menus;
 
 import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 
 import bibliothek.gui.DockFrontend;
 
@@ -29,6 +30,17 @@ public class WindowMenu extends JMenu {
 	 * show view menu
 	 */
 	private void initViewMenu() {
+		JMenuItem item = new JMenuItem();
+		item.setText("新規ウィンドウ(N)");
+		item.setMnemonic('N');
+		add(item);
+		item = new JMenuItem();
+		item.setText("ツールバーの非表示(T)");
+		item.setMnemonic('T');
+		add(item);
+		addSeparator();
+
+		add(PerspectiveMenu.instance().getWidowMenu());
 		add(new ViewMenu(frontend));
 	}
 }

@@ -87,7 +87,6 @@ public class Application {
 		for (Runnable onClose : runOnClose) {
 			onClose.run();
 		}
-		System.exit(0);
 	}
 
 	/**
@@ -146,7 +145,6 @@ public class Application {
 		buildDefaultPerspective();
 		buildMenu();
 		buildToolBar();
-
 	}
 
 	/**
@@ -198,8 +196,8 @@ public class Application {
 	 * Builds the toolbar and adds it to top
 	 */
 	private void buildToolBar() {
-		TopToolBar toolbar = new TopToolBar();
-		
+		TopToolBar toolbar = new TopToolBar(this);
+
 		frame.setToolBar(toolbar);
 	}
 
@@ -242,4 +240,19 @@ public class Application {
 			}
 		});
 	}
+
+	/**
+	 * @return frame
+	 */
+	public FrameMain getFrame() {
+		return frame;
+	}
+
+	/**
+	 * @return frontend
+	 */
+	public DockFrontend getFrontend() {
+		return frontend;
+	}
+
 }
